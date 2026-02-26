@@ -10,8 +10,11 @@
         body { font-family: 'Manrope', sans-serif; scroll-behavior: smooth; }
         .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
         .skill-badge { background: rgba(99, 102, 241, 0.1); color: #6366f1; border: 1px solid rgba(99, 102, 241, 0.2); }
-        .project-card { transition: all 0.4s ease; }
+        .project-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .project-card:hover { transform: translateY(-10px); }
+        .img-container { overflow: hidden; height: 220px; background: #f1f5f9; }
+        .img-container img { transition: transform 0.5s ease; object-fit: cover; width: 100%; height: 100%; }
+        .project-card:hover .img-container img { transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 leading-relaxed">
@@ -30,7 +33,7 @@
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#projects" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-500 transition shadow-lg">Смотреть проекты</a>
-                    <a href="#contact" class="border border-white/20 px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition">Связаться</a>
+                    <a href="#skills" class="border border-white/20 px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition">Компетенции</a>
                 </div>
             </div>
         </div>
@@ -39,83 +42,112 @@
 
     <main class="max-w-6xl mx-auto px-6 py-20">
 
-        <section class="grid md:grid-cols-2 gap-12 mb-32">
+        <section class="grid md:grid-cols-2 gap-8 mb-32">
             <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <span class="text-indigo-600">🏢</span> Корпоративный сектор
-                </h3>
-                <p class="text-slate-600 mb-4 italic text-sm">Знаю жесткие стандарты обучения технарей и сейлзов:</p>
-                <ul class="space-y-3 text-sm font-medium">
-                    <li class="flex items-start gap-2">🔹 Выстраивала Blended Learning в телекоме.</li>
-                    <li class="flex items-start gap-2">🔹 Сократила сроки онбординга в логистике в 3 раза.</li>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><span class="text-indigo-600">🏢</span> Корпоративный сектор</h3>
+                <ul class="space-y-4 text-slate-600">
+                    <li class="flex items-start gap-2">🔹 Выстраивала Blended Learning для технарей в телекоме.</li>
+                    <li class="flex items-start gap-2">🔹 Сокращала сроки онбординга сейлзов в логистике в 3 раза.</li>
                 </ul>
             </div>
             <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
-                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
-                    <span class="text-indigo-600">🚀</span> EdTech рынок
-                </h3>
-                <p class="text-slate-600 mb-4 italic text-sm">Знаю изнанку образовательных продуктов:</p>
-                <ul class="space-y-3 text-sm font-medium">
-                    <li class="flex items-start gap-2">🔹 Работаю с оценкой контента и качеством (QA).</li>
-                    <li class="flex items-start gap-2">🔹 Управляю метриками доходимости и мотивацией.</li>
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3"><span class="text-indigo-600">🚀</span> EdTech рынок</h3>
+                <ul class="space-y-4 text-slate-600">
+                    <li class="flex items-start gap-2">🔹 Работаю с оценкой контента и метриками доходимости.</li>
+                    <li class="flex items-start gap-2">🔹 Управляю мотивацией и вовлеченностью взрослых студентов.</li>
                 </ul>
             </div>
         </section>
 
-        <section class="mb-32">
-            <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter">Навыки и компетенции</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="space-y-4">
-                    <h4 class="font-bold text-indigo-600 text-xs uppercase tracking-widest">Проектирование</h4>
-                    <p class="text-sm font-semibold">От снятия запроса до готовых курсов и тренажеров (Rise, iSpring).</p>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="font-bold text-indigo-600 text-xs uppercase tracking-widest">Аудит и Качество</h4>
-                    <p class="text-sm font-semibold">Оценка работы методологов, экологичная развивающая обратная связь.</p>
-                </div>
-                <div class="space-y-4">
-                    <h4 class="font-bold text-indigo-600 text-xs uppercase tracking-widest">Технологичность</h4>
-                    <p class="text-sm font-semibold">Автоматизация рутины, Telegram-боты, работа с ИИ для продакшена.</p>
-                </div>
-            </div>
-
-            <div class="mt-16 grid md:grid-cols-2 gap-16">
+        <section id="skills" class="mb-32">
+            <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter">Компетенции</h2>
+            <div class="grid md:grid-cols-2 gap-16">
                 <div>
                     <h4 class="font-bold mb-6 text-slate-400 uppercase text-[10px] tracking-widest">Продвинутый уровень</h4>
                     <div class="flex flex-wrap gap-2">
                         <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">Управление обучением (T&D)</span>
                         <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">Instructional Design</span>
-                        <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">Адаптация персонала</span>
-                        <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">Blended Learning</span>
+                        <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">SJM / CJM</span>
                         <span class="skill-badge px-4 py-2 rounded-xl text-xs font-bold">Оценка эффективности</span>
                     </div>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6 text-slate-400 uppercase text-[10px] tracking-widest">Средний уровень / Инструменты</h4>
+                    <h4 class="font-bold mb-6 text-slate-400 uppercase text-[10px] tracking-widest">Инструменты</h4>
                     <div class="flex flex-wrap gap-2 text-slate-500">
-                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Moodle / iSpring</span>
-                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Figma</span>
-                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Tilda / Notion</span>
+                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Moodle / iSpring / Rise</span>
+                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Figma / Miro</span>
+                        <span class="bg-slate-200 px-4 py-2 rounded-xl text-xs font-bold">Telegram-боты / AI</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="projects" class="mb-32">
-            <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter">Портфолио проектов</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                 </div>
+            <h2 class="text-3xl font-black mb-12 uppercase tracking-tighter">Портфолио</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <div class="project-card bg-white rounded-[2.5rem] overflow-hidden shadow-xl border-2 border-indigo-500 md:col-span-2 flex flex-col md:flex-row">
+                    <div class="md:w-1/2 bg-indigo-900 flex items-center justify-center text-8xl p-20">🤖</div>
+                    <div class="p-12 md:w-1/2 flex flex-col justify-center">
+                        <span class="bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase w-max mb-4">Case Study</span>
+                        <h3 class="text-3xl font-extrabold mb-4 italic">Цифровой Бадди: Онбординг в IT</h3>
+                        <p class="text-slate-600 mb-6">Снижение текучести с 22% до 15%. Проектирование от результата, таксономия Блума и интерактивный сценарий.</p>
+                        <a href="https://lera.github.io/case-digital-buddy" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-700 transition w-max">Изучить методологию →</a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100">
+                    <div class="img-container"><img src="img/telecom.jpg" alt="Telecom Case"></div>
+                    <div class="p-10">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase mb-2 block">Telecom</span>
+                        <h3 class="text-2xl font-bold mb-4">Входное обучение тех. специалистов</h3>
+                        <p class="text-slate-600 text-sm mb-4">Курсы в Moodle + учебные стенды. Совместная работа с экспертами над переводом сложных процессов в понятные инструкции.</p>
+                        <p class="text-indigo-600 font-bold text-xs">Результат: Уменьшение аварийности на старте.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100">
+                    <div class="img-container"><img src="img/logistics.jpg" alt="Logistics Case"></div>
+                    <div class="p-10">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase mb-2 block">Logistics / Sales</span>
+                        <h3 class="text-2xl font-bold mb-4">Онбординг отдела продаж</h3>
+                        <p class="text-slate-600 text-sm mb-4">Сокращение адаптации с 2 месяцев до 2 недель. Внедрение симуляций звонков и ролевых отработок.</p>
+                        <p class="text-indigo-600 font-bold text-xs">Результат: 85% новичков готовы к работе.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100">
+                    <div class="img-container"><img src="img/longread.jpg" alt="Conflict Longread"></div>
+                    <div class="p-10">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase mb-2 block">Soft Skills</span>
+                        <h3 class="text-2xl font-bold mb-4">Лонгрид: Управление конфликтами</h3>
+                        <p class="text-slate-600 text-sm mb-4">Курс на основе сторителлинга «История Леры и команды». Визуализированный контент для занятой аудитории.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-[2.5rem] overflow-hidden shadow-lg border border-slate-100">
+                    <div class="img-container"><img src="img/mastermind.jpg" alt="Mastermind Case"></div>
+                    <div class="p-10">
+                        <span class="text-slate-400 font-bold text-[10px] uppercase mb-2 block">Offline Training</span>
+                        <h3 class="text-2xl font-bold mb-4">Мастермайнд: Клиентский сервис</h3>
+                        <p class="text-slate-600 text-sm mb-4">Методический сценарий на 135 минут, рабочая тетрадь и карточки для фасилитированной сессии.</p>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
     </main>
 
     <footer id="contact" class="bg-slate-900 text-white py-24 px-6 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-6 italic text-indigo-400 italic">Ищу роли, где важна архитектура треков и управление методологией.</h2>
-            <div class="flex justify-center gap-12 mt-12 font-bold text-xl">
-                <a href="mailto:..." class="border-b-2 border-indigo-500 pb-1 hover:text-indigo-400 transition">Email</a>
-                <a href="..." class="border-b-2 border-indigo-500 pb-1 hover:text-indigo-400 transition">Telegram</a>
+            <h2 class="text-3xl font-bold mb-12 italic text-indigo-400">Рассматриваю роли, где важна архитектура треков и управление методологией.</h2>
+            <div class="flex justify-center gap-12 font-bold text-xl">
+                <a href="mailto:ivancova@example.com" class="border-b-2 border-indigo-500 pb-1 hover:text-indigo-400 transition">Email</a>
+                <a href="https://t.me/lerakotik" class="border-b-2 border-indigo-500 pb-1 hover:text-indigo-400 transition">Telegram</a>
             </div>
+            <p class="mt-20 opacity-20 text-[10px] uppercase tracking-[0.8em]">Valeria Ivantsova Portfolio 2026</p>
         </div>
     </footer>
 
