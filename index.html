@@ -10,41 +10,33 @@
         body { 
             font-family: 'Manrope', sans-serif; 
             scroll-behavior: smooth; 
-            background-color: #0F172A; /* Глубокий темный фон */
+            background-color: #0F172A; 
             color: #E2E8F0;
             position: relative;
-            overflow-x: hidden;
         }
 
-        /* Эффект Aurora UI на фоне */
+        /* Аврора-фон */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            top: -50%; left: -50%; width: 200%; height: 200%;
             background: 
                 radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.04) 0%, transparent 50%);
+                radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
             z-index: -1;
             filter: blur(80px);
             animation: aurora 25s infinite linear;
         }
 
         @keyframes aurora {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(3%, 3%) rotate(3deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* Эффект матового стекла для карточек */
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
             transition: all 0.4s ease;
         }
 
@@ -54,25 +46,12 @@
             transform: translateY(-5px);
         }
 
-        /* Стили для контейнера с картинкой в кейсе */
-        .img-container { 
-            overflow: hidden; 
-            height: 200px; 
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 1rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .img-container img { 
-            transition: transform 0.5s ease; 
-            object-fit: cover; 
-            width: 100%; 
-            height: 100%; 
-        }
-        .glass-card:hover .img-container img { transform: scale(1.03); }
+        .img-link { display: block; overflow: hidden; border-radius: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); cursor: zoom-in; }
+        .img-link img { transition: transform 0.5s ease; width: 100%; height: 200px; object-fit: cover; }
+        .img-link:hover img { transform: scale(1.05); }
 
-        .process-step { position: relative; padding-left: 1.5rem; color: #94A3B8; }
-        .process-step::before { content: '→'; position: absolute; left: 0; color: #6366f1; font-weight: bold; }
+        .process-step { position: relative; padding-left: 1.5rem; color: #94A3B8; font-size: 0.85rem; }
+        .process-step::before { content: '→'; position: absolute; left: 0; color: #6366f1; }
         
         .result-badge {
             background: rgba(20, 184, 166, 0.08);
@@ -80,142 +59,105 @@
             border: 1px solid rgba(20, 184, 166, 0.15);
         }
 
-        h1, h2, h3 { color: #FFFFFF; tracking: -0.02em; }
-        .text-indigo-400 { color: #818CF8; }
-        .text-slate-400 { color: #94A3B8; }
-
-        footer {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        .external-link {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #818CF8;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
+        .external-link:hover { text-decoration: underline; color: #FFFFFF; }
     </style>
 </head>
 <body>
 
-    <header class="py-24 px-6 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
-            <div class="w-56 h-56 md:w-64 md:h-64 flex-shrink-0">
-                <img src="img/avatar.jpg" alt="Валерия Иванцова" class="w-full h-full object-cover rounded-[3rem] shadow-2xl border-4 border-white/5">
-            </div>
-            
-            <div class="text-left">
-                <h1 class="text-6xl font-extrabold mb-6 tracking-tight">Валерия Иванцова</h1>
-                <p class="text-2xl text-indigo-400 font-light mb-8 italic tracking-wide">Архитектор образовательного опыта | Методолог</p>
-                <p class="max-w-3xl text-lg text-slate-400 font-light leading-relaxed mb-10">
-                    Я проектирую структурное обучение, которое решает реальные боли бизнеса: сокращает время адаптации, экономит бюджет и меняет поведение сотрудников.
-                </p>
-                <a href="#projects" class="bg-indigo-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-indigo-500 transition shadow-lg inline-block">Смотреть проекты</a>
+    <header class="py-24 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="w-56 h-56 md:w-64 md:h-64 flex-shrink-0">
+            <a href="img/avatar.jpg" target="_blank">
+                <img src="img/avatar.jpg" alt="Валерия Иванцова" class="w-full h-full object-cover rounded-[3rem] shadow-2xl border-4 border-white/5 hover:scale-105 transition">
+            </a>
+        </div>
+        <div class="text-left">
+            <h1 class="text-6xl font-extrabold mb-4 tracking-tight">Валерия Иванцова</h1>
+            <p class="text-2xl text-indigo-400 font-light mb-6">Архитектор образовательного опыта | LX-методолог</p>
+            <p class="max-w-2xl text-lg text-slate-400 font-light leading-relaxed mb-8">
+                Специализируюсь на обучении, которое решает боли бизнеса. Мой подход: от глубокого интервью с экспертами до измеримого результата в цифрах.
+            </p>
+            <div class="flex gap-4">
+                <a href="mailto:halera111@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition">Написать на почту</a>
+                <a href="https://t.me/ivalera_93" target="_blank" class="border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition">Telegram</a>
             </div>
         </div>
     </header>
 
-    <main id="projects" class="max-w-6xl mx-auto px-6 py-16">
+    <main class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10">
 
-        <h2 class="text-4xl font-black mb-16 uppercase tracking-tighter text-center">Избранные кейсы</h2>
+        <!-- Кейс 1: Телеком -->
+        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
+            <a href="img/telecom.jpg" target="_blank" class="img-link">
+                <img src="img/telecom.jpg" alt="Telecom Case">
+            </a>
+            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">K Telecom | Onboarding</span>
+            <h3 class="text-2xl font-bold mt-2 mb-4">Сервисные инженеры: ускорение в 3 раза</h3>
+            <p class="text-slate-400 text-sm mb-6">Проблема: обучение с нуля занимало 6 месяцев, высокая аварийность. Решение: Moodle + учебные стенды + регламент наставничества.</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm">Срок вывода сокращен до 1 месяца</div>
+                <a href="https://docs.google.com/spreadsheets/d/19TeM79ZUG7c39xU4dAAHVZ7y7AUv90Q1wvTMl7LrPcY/edit?gid=343044917#gid=343044917" target="_blank" class="external-link">Смотреть темплан в Google Таблицах ↗</a>
+            </div>
+        </section>
 
-        <div class="grid md:grid-cols-2 gap-10">
+        <!-- Кейс 2: Логистика -->
+        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
+            <a href="img/logistics.jpg" target="_blank" class="img-link">
+                <img src="img/logistics.jpg" alt="Logistics Case">
+            </a>
+            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">Transatlantic | Sales & Ops</span>
+            <h3 class="text-2xl font-bold mt-2 mb-4">Бот-онбординг для менеджеров по логистике</h3>
+            <p class="text-slate-400 text-sm mb-6">Проблема: стресс новичков и перегруз наставников. Решение: Сборка знаний через интервью и запуск Telegram-бота с микро-обучением.</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm">Нагрузка на наставников снижена в 2 раза</div>
+                <a href="https://docs.google.com/spreadsheets/d/1FfE_oQ4eSiJa64QcOyzOFE6gIw3panPgSPHf-bha428/edit?gid=1236013699#gid=1236013699" target="_blank" class="external-link">Смотреть структуру курса ↗</a>
+            </div>
+        </section>
 
-            <section class="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between">
-                <div>
-                    <div class="img-container"><img src="img/telecom.jpg" alt="Telecom Case"></div>
-                    <span class="text-indigo-400 font-bold tracking-widest uppercase text-xs">Telecom | Кейс по сокращению адаптации</span>
-                    <h3 class="text-2xl font-bold mt-3 mb-6">Обучение сервисных инженеров с нуля</h3>
-                    
-                    <h4 class="font-bold text-red-400 mb-1 uppercase text-xs tracking-wide">Проблема:</h4>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Стихийное обучение занимало от 3 до 6 месяцев. Наставники-сдельщики не хотели учить новичков, что вело к аварийности на объектах.</p>
-                    
-                    <h4 class="font-bold mb-3 uppercase text-xs text-slate-500 tracking-wider">Решение:</h4>
-                    <ul class="space-y-2 text-xs text-slate-400 mb-6">
-                        <li class="process-step">Оцифровка знаний в Moodle.</li>
-                        <li class="process-step">Внедрение учебных стендов для практики без риска аварий.</li>
-                        <li class="process-step">Регламент и аттестация наставников.</li>
-                    </ul>
-                </div>
-                
-                <div class="result-badge p-4 rounded-xl font-bold text-sm text-center">
-                    Срок вывода сокращен в 3 раза (с 3 месяцев до 1).
-                </div>
-            </section>
+        <!-- Кейс 3: Мастермайнд -->
+        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
+            <a href="img/mastermind.jpg" target="_blank" class="img-link">
+                <img src="img/mastermind.jpg" alt="Mastermind Case">
+            </a>
+            <span class="text-teal-400 font-bold uppercase text-[10px] tracking-widest">Soft Skills | Support Team</span>
+            <h3 class="text-2xl font-bold mt-2 mb-4">Мастермайнд против выгорания саппорта</h3>
+            <p class="text-slate-400 text-sm mb-6">Проблема: токсичность из-за стресса. Решение: формат "терапевтического обучения" — теория мозга + практики взаимоподдержки.</p>
+            
+            <div class="space-y-4 mb-8">
+                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm" style="color:#2DD4BF; background:rgba(45,212,191,0.05);">Рост позитивного фидбека от клиентов</div>
+                <a href="https://docs.google.com/document/d/1xljBFGqGGvW4cmuSYhEHZ9_hxHqskjG0nI_hBhdAX2M/edit?tab=t.0" target="_blank" class="external-link">Читать методический сценарий ↗</a>
+            </div>
+        </section>
 
-            <section class="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between">
-                <div>
-                    <div class="img-container"><img src="img/logistics.jpg" alt="Logistics Case"></div>
-                    <span class="text-indigo-400 font-bold tracking-widest uppercase text-xs">Logistics | Автоматизация без бюджета</span>
-                    <h3 class="text-2xl font-bold mt-3 mb-6">Онбординг в международной логистике</h3>
-                    
-                    <h4 class="font-bold text-red-400 mb-1 uppercase text-xs tracking-wide">Проблема:</h4>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Разрозненная информация о продукте. Новички в стрессе. Нужно было решение без ресурсов на дорогую LMS.</p>
-                    
-                    <h4 class="font-bold mb-3 uppercase text-xs text-slate-500 tracking-wider">Решение:</h4>
-                    <ul class="space-y-2 text-xs text-slate-400 mb-6">
-                        <li class="process-step">Глубинные интервью для сбора «базы выживания».</li>
-                        <li class="process-step">Сборка контента в микро-формате (карточки, тренажеры).</li>
-                        <li class="process-step">Запуск Telegram-бота для микро-обучения на рабочем месте.</li>
-                    </ul>
-                </div>
-                
-                <div class="result-badge p-4 rounded-xl font-bold text-sm text-center">
-                    Выход на результат быстрее в 2 раза. Сэкономлен бюджет LMS. Разгружены наставники. 
-                </div>
-            </section>
-
-            <section class="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between">
-                <div>
-                    <div class="img-container"><img src="img/mastermind.jpg" alt="Mastermind Case"></div>
-                    <span class="text-teal-400 font-bold tracking-widest uppercase text-xs">Soft Skills | Психология сервиса</span>
-                    <h3 class="text-2xl font-bold mt-3 mb-6">Мастермайнд: Клиентский сервис</h3>
-                    
-                    <h4 class="font-bold text-red-400 mb-1 uppercase text-xs tracking-wide">Проблема:</h4>
-                    <p class="text-slate-400 text-sm mb-4 leading-relaxed">Выгорание саппорта. Из-за стресса операторам тяжело оставаться тактичными. Сухая теория не работала.</p>
-                    
-                    <h4 class="font-bold mb-3 uppercase text-xs text-slate-500 tracking-wider">Решение (Терапевтический формат):</h4>
-                    <ul class="space-y-2 text-xs text-slate-400 mb-6">
-                        <li class="process-step">Теория: как устроен мозг в стрессе.</li>
-                        <li class="process-step">Техники самопомощи и взаимоподдержки.</li>
-                        <li class="process-step">Безопасное пространство, чтобы "поныть".</li>
-                    </ul>
-                </div>
-                
-                <div class="result-badge p-4 rounded-xl font-bold text-sm text-center" style="background: rgba(45, 212, 191, 0.05); color: #2DD4BF; border-color: rgba(45, 212, 191, 0.1);">
-                    Рост позитивной обратной связи от клиентов.
-                </div>
-            </section>
-
-            <section class="glass-card p-10 rounded-[2.5rem] flex flex-col justify-between border-2 border-indigo-500/30 shadow-indigo-500/10 shadow-xl">
-                <div>
-                    <div class="img-container"><img src="img/longread.jpg" alt="Conflict Longread"></div>
-                    <span class="text-indigo-400 font-bold tracking-widest uppercase text-xs">Neuro-Learning Case</span>
-                    <h3 class="text-2xl font-bold mt-3 mb-6">Свежий проект: Конфликтология</h3>
-                    
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Обучающий лонгрид, спроектированный на стыке сторителлинга и нейробиологии обучения. Содержит интерактивные блоки «активного вспоминания» для лучшего усвоения.</p>
-                </div>
-                
-                <a href="https://leravalera93186.github.io/conflictology-project/" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition inline-block text-center shadow-lg shadow-indigo-500/20">Изучить методологию →</a>
-            </section>
-
-        </div>
+        <!-- Кейс 4: Лонгрид Конфликтология -->
+        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col border-2 border-indigo-500/20">
+            <a href="img/longread.jpg" target="_blank" class="img-link">
+                <img src="img/longread.jpg" alt="Conflict Longread">
+            </a>
+            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">Featured Project | Neuro-learning</span>
+            <h3 class="text-2xl font-bold mt-2 mb-4">Лонгрид: Анатомия Конфликта</h3>
+            <p class="text-slate-400 text-sm mb-6">Методический проект, где сторителлинг Леры встречается с нейробиологией. Проектирование вовлечения через "активное вспоминание".</p>
+            
+            <div class="space-y-4 mb-8">
+                <a href="https://docs.google.com/spreadsheets/d/12a937XR9mVONu0euUSZID8OiBdU7JmQCp0YhdrtmzPI/edit?gid=0#gid=0" target="_blank" class="external-link">Темплан проекта ↗</a>
+                <a href="https://leravalera93186.github.io/conflictology-project/" target="_blank" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition text-center block">Открыть живой лонгрид</a>
+            </div>
+        </section>
 
     </main>
 
-    <footer id="contact" class="py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 italic text-indigo-400">Готова обсудить ваши задачи по обучению</h2>
-            <p class="text-slate-500 mb-10 font-light">Напишите мне, если вам нужно структурное обучение от боли бизнеса до результата.</p>
-            
-            <div class="grid md:grid-cols-2 gap-8 text-lg font-light">
-                <div class="p-6 bg-white/5 rounded-2xl border border-white/5">
-                    <span class="text-slate-500 uppercase text-[10px] tracking-widest block mb-1">Email</span>
-                    <a href="mailto:halera111@gmail.com" class="hover:text-white transition border-b border-indigo-500/30 pb-1">halera111@gmail.com</a>
-                </div>
-                <div class="p-6 bg-white/5 rounded-2xl border border-white/5">
-                    <span class="text-slate-500 uppercase text-[10px] tracking-widest block mb-1">Telegram</span>
-                    <a href="https://t.me/ivalera_93" class="hover:text-white transition border-b border-indigo-500/30 pb-1">@ivalera_93</a>
-                </div>
-            </div>
-
-            <p class="mt-20 text-xs text-slate-700 uppercase tracking-widest">© Валерия Иванцова | Portfolio 2026</p>
-        </div>
+    <footer class="py-20 text-center opacity-40 text-xs tracking-[0.5em] uppercase">
+        Valeria Ivantsova | LX Architect 2026
     </footer>
 
 </body>
