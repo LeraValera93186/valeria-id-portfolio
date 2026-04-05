@@ -7,157 +7,127 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { 
-            font-family: 'Manrope', sans-serif; 
-            scroll-behavior: smooth; 
-            background-color: #0F172A; 
-            color: #E2E8F0;
-            position: relative;
-        }
-
-        /* Аврора-фон */
+        body { font-family: 'Manrope', sans-serif; scroll-behavior: smooth; background-color: #0F172A; color: #E2E8F0; }
         body::before {
-            content: '';
-            position: fixed;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: 
-                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
-            z-index: -1;
-            filter: blur(80px);
-            animation: aurora 25s infinite linear;
+            content: ''; position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
+            z-index: -1; filter: blur(80px); animation: aurora 25s infinite linear;
         }
-
-        @keyframes aurora {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
-        }
-
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(99, 102, 241, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .img-link { display: block; overflow: hidden; border-radius: 1rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); cursor: zoom-in; }
-        .img-link img { transition: transform 0.5s ease; width: 100%; height: 200px; object-fit: cover; }
-        .img-link:hover img { transform: scale(1.05); }
-
-        .process-step { position: relative; padding-left: 1.5rem; color: #94A3B8; font-size: 0.85rem; }
-        .process-step::before { content: '→'; position: absolute; left: 0; color: #6366f1; }
-        
-        .result-badge {
-            background: rgba(20, 184, 166, 0.08);
-            color: #2DD4BF;
-            border: 1px solid rgba(20, 184, 166, 0.15);
-        }
-
-        .external-link {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #818CF8;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .external-link:hover { text-decoration: underline; color: #FFFFFF; }
+        @keyframes aurora { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.4s ease; }
+        .glass-card:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(99, 102, 241, 0.2); transform: translateY(-5px); }
+        .img-link { display: block; overflow: hidden; border-radius: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1); cursor: zoom-in; }
+        .img-link img { transition: transform 0.5s ease; width: 100%; height: 220px; object-fit: cover; }
+        .process-step { position: relative; padding-left: 1.2rem; color: #94A3B8; font-size: 0.85rem; line-height: 1.4; margin-bottom: 8px; }
+        .process-step::before { content: '→'; position: absolute; left: 0; color: #6366f1; font-weight: bold; }
+        .result-badge { background: rgba(20, 184, 166, 0.1); color: #2DD4BF; border: 1px solid rgba(20, 184, 166, 0.2); }
+        .external-link { color: #818CF8; font-size: 0.85rem; font-weight: 600; }
+        .external-link:hover { text-decoration: underline; color: #fff; }
     </style>
 </head>
-<body>
+<body class="px-6 py-10">
 
-    <header class="py-24 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-        <div class="w-56 h-56 md:w-64 md:h-64 flex-shrink-0">
-            <a href="img/avatar.jpg" target="_blank">
-                <img src="img/avatar.jpg" alt="Валерия Иванцова" class="w-full h-full object-cover rounded-[3rem] shadow-2xl border-4 border-white/5 hover:scale-105 transition">
-            </a>
+    <header class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-20">
+        <div class="w-56 h-56 flex-shrink-0">
+            <a href="img/avatar.jpg" target="_blank"><img src="img/avatar.jpg" alt="Валерия" class="w-full h-full object-cover rounded-[3rem] shadow-2xl border-4 border-white/5"></a>
         </div>
-        <div class="text-left">
-            <h1 class="text-6xl font-extrabold mb-4 tracking-tight">Валерия Иванцова</h1>
-            <p class="text-2xl text-indigo-400 font-light mb-6">Архитектор образовательного опыта | LX-методолог</p>
-            <p class="max-w-2xl text-lg text-slate-400 font-light leading-relaxed mb-8">
-                Специализируюсь на обучении, которое решает боли бизнеса. Мой подход: от глубокого интервью с экспертами до измеримого результата в цифрах.
-            </p>
-            <div class="flex gap-4">
-                <a href="mailto:halera111@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition">Написать на почту</a>
-                <a href="https://t.me/ivalera_93" target="_blank" class="border border-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition">Telegram</a>
-            </div>
+        <div>
+            <h1 class="text-6xl font-extrabold mb-4">Валерия Иванцова</h1>
+            <p class="text-2xl text-indigo-400 font-light italic mb-6">Архитектор образовательного опыта | LX-методолог</p>
+            <p class="max-w-2xl text-slate-400 leading-relaxed">Проектирую обучение от боли бизнеса до измеримого результата. Умею «вытаскивать» знания из экспертов и упаковывать их в эффективные треки.</p>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-2 gap-10">
+    <main class="max-w-6xl mx-auto space-y-12">
 
-        <!-- Кейс 1: Телеком -->
-        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
-            <a href="img/telecom.jpg" target="_blank" class="img-link">
-                <img src="img/telecom.jpg" alt="Telecom Case">
-            </a>
-            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">K Telecom | Onboarding</span>
-            <h3 class="text-2xl font-bold mt-2 mb-4">Сервисные инженеры: ускорение в 3 раза</h3>
-            <p class="text-slate-400 text-sm mb-6">Проблема: обучение с нуля занимало 6 месяцев, высокая аварийность. Решение: Moodle + учебные стенды + регламент наставничества.</p>
-            
-            <div class="space-y-4 mb-8">
-                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm">Срок вывода сокращен до 1 месяца</div>
-                <a href="https://docs.google.com/spreadsheets/d/19TeM79ZUG7c39xU4dAAHVZ7y7AUv90Q1wvTMl7LrPcY/edit?gid=343044917#gid=343044917" target="_blank" class="external-link">Смотреть темплан в Google Таблицах ↗</a>
+        <!-- ФЛАГМАН: УЧЕБНЫЙ КЕЙС SJM -->
+        <section class="glass-card p-10 rounded-[3rem] border-2 border-indigo-500/30">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase">Флагманский проект</span>
+                    <h3 class="text-3xl font-bold mt-4 mb-4 italic">Цифровой Бадди: Онбординг в IT</h3>
+                    <p class="text-slate-400 mb-6 italic text-sm">Проблема: Текучесть на испытательном сроке 22% из-за отсутствия структуры адаптации.</p>
+                    <div class="mb-6">
+                        <h4 class="text-xs font-bold uppercase text-indigo-400 mb-3">Процесс проектирования:</h4>
+                        <div class="process-step">Проектирование от результата через таксономию Блума.</div>
+                        <div class="process-step">Построение SJM (Student Journey Map) для выявления барьеров.</div>
+                        <div class="process-step">Создание интерактивного сценария и системы мотивации.</div>
+                    </div>
+                    <a href="https://leravalera93186.github.io/SJM/" target="_blank" class="bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-indigo-500 transition inline-block">Изучить методологию SJM →</a>
+                </div>
+                <a href="img/avatar.jpg" target="_blank" class="img-link h-full"><img src="img/avatar.jpg" alt="SJM Case" class="h-full"></a>
             </div>
         </section>
 
-        <!-- Кейс 2: Логистика -->
-        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
-            <a href="img/logistics.jpg" target="_blank" class="img-link">
-                <img src="img/logistics.jpg" alt="Logistics Case">
-            </a>
-            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">Transatlantic | Sales & Ops</span>
-            <h3 class="text-2xl font-bold mt-2 mb-4">Бот-онбординг для менеджеров по логистике</h3>
-            <p class="text-slate-400 text-sm mb-6">Проблема: стресс новичков и перегруз наставников. Решение: Сборка знаний через интервью и запуск Telegram-бота с микро-обучением.</p>
-            
-            <div class="space-y-4 mb-8">
-                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm">Нагрузка на наставников снижена в 2 раза</div>
-                <a href="https://docs.google.com/spreadsheets/d/1FfE_oQ4eSiJa64QcOyzOFE6gIw3panPgSPHf-bha428/edit?gid=1236013699#gid=1236013699" target="_blank" class="external-link">Смотреть структуру курса ↗</a>
-            </div>
-        </section>
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- К ТЕЛЕКОМ -->
+            <section class="glass-card p-8 rounded-[2.5rem] flex flex-col">
+                <a href="img/telecom.jpg" target="_blank" class="img-link"><img src="img/telecom.jpg" alt="Telecom"></a>
+                <h3 class="text-2xl font-bold mb-4">К Телеком: Адаптация за 1 месяц</h3>
+                <p class="text-red-400 text-xs font-bold uppercase mb-2">Проблема:</p>
+                <p class="text-slate-400 text-sm mb-4">Стихийное обучение инженеров занимало до 6 месяцев. Наставникам некогда учить, на объектах высокая аварийность.</p>
+                <div class="mb-6 bg-white/5 p-4 rounded-xl">
+                    <h4 class="text-[10px] font-bold uppercase text-slate-500 mb-2">Процесс решения:</h4>
+                    <div class="process-step">Knowledge Extraction: оцифровка знаний экспертов в Moodle.</div>
+                    <div class="process-step">Учебные стенды для безопасной отработки "в полях".</div>
+                    <div class="process-step">Регламент и аттестация наставников на сделке.</div>
+                </div>
+                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm mb-4">Срок вывода сокращен в 3 раза</div>
+                <a href="https://docs.google.com/spreadsheets/d/19TeM79ZUG7c39xU4dAAHVZ7y7AUv90Q1wvTMl7LrPcY/edit?gid=343044917#gid=343044917" target="_blank" class="external-link">Методический темплан ↗</a>
+            </section>
 
-        <!-- Кейс 3: Мастермайнд -->
-        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col">
-            <a href="img/mastermind.jpg" target="_blank" class="img-link">
-                <img src="img/mastermind.jpg" alt="Mastermind Case">
-            </a>
-            <span class="text-teal-400 font-bold uppercase text-[10px] tracking-widest">Soft Skills | Support Team</span>
-            <h3 class="text-2xl font-bold mt-2 mb-4">Мастермайнд против выгорания саппорта</h3>
-            <p class="text-slate-400 text-sm mb-6">Проблема: токсичность из-за стресса. Решение: формат "терапевтического обучения" — теория мозга + практики взаимоподдержки.</p>
-            
-            <div class="space-y-4 mb-8">
-                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm" style="color:#2DD4BF; background:rgba(45,212,191,0.05);">Рост позитивного фидбека от клиентов</div>
-                <a href="https://docs.google.com/document/d/1xljBFGqGGvW4cmuSYhEHZ9_hxHqskjG0nI_hBhdAX2M/edit?tab=t.0" target="_blank" class="external-link">Читать методический сценарий ↗</a>
-            </div>
-        </section>
+            <!-- ТРАНСАТЛАНТИК -->
+            <section class="glass-card p-8 rounded-[2.5rem] flex flex-col">
+                <a href="img/logistics.jpg" target="_blank" class="img-link"><img src="img/logistics.jpg" alt="Logistics"></a>
+                <h3 class="text-2xl font-bold mb-4">Трансатлантик: Бот-онбординг</h3>
+                <p class="text-red-400 text-xs font-bold uppercase mb-2">Проблема:</p>
+                <p class="text-slate-400 text-sm mb-4">Разрозненные знания о логистике. Высокий стресс новичков. Отсутствие бюджета на дорогую LMS.</p>
+                <div class="mb-6 bg-white/5 p-4 rounded-xl">
+                    <h4 class="text-[10px] font-bold uppercase text-slate-500 mb-2">Процесс решения:</h4>
+                    <div class="process-step">Глубинные интервью с ТОП-менеджерами компании.</div>
+                    <div class="process-step">Сборка базы знаний в формате микро-обучения.</div>
+                    <div class="process-step">Сборка и запуск Telegram-бота для мобильного обучения.</div>
+                </div>
+                <div class="result-badge p-3 rounded-xl font-bold text-center text-sm mb-4">Выход на результат быстрее в 2 раза</div>
+                <a href="https://docs.google.com/spreadsheets/d/1FfE_oQ4eSiJa64QcOyzOFE6gIw3panPgSPHf-bha428/edit?gid=1236013699#gid=1236013699" target="_blank" class="external-link">Структура курса в ТГ ↗</a>
+            </section>
 
-        <!-- Кейс 4: Лонгрид Конфликтология -->
-        <section class="glass-card p-10 rounded-[2.5rem] flex flex-col border-2 border-indigo-500/20">
-            <a href="img/longread.jpg" target="_blank" class="img-link">
-                <img src="img/longread.jpg" alt="Conflict Longread">
-            </a>
-            <span class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest">Featured Project | Neuro-learning</span>
-            <h3 class="text-2xl font-bold mt-2 mb-4">Лонгрид: Анатомия Конфликта</h3>
-            <p class="text-slate-400 text-sm mb-6">Методический проект, где сторителлинг Леры встречается с нейробиологией. Проектирование вовлечения через "активное вспоминание".</p>
-            
-            <div class="space-y-4 mb-8">
-                <a href="https://docs.google.com/spreadsheets/d/12a937XR9mVONu0euUSZID8OiBdU7JmQCp0YhdrtmzPI/edit?gid=0#gid=0" target="_blank" class="external-link">Темплан проекта ↗</a>
-                <a href="https://leravalera93186.github.io/conflictology-project/" target="_blank" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition text-center block">Открыть живой лонгрид</a>
-            </div>
-        </section>
+            <!-- МАСТЕРМАЙНД -->
+            <section class="glass-card p-8 rounded-[2.5rem] flex flex-col">
+                <a href="img/mastermind.jpg" target="_blank" class="img-link"><img src="img/mastermind.jpg" alt="Mastermind"></a>
+                <h3 class="text-2xl font-bold mb-4">Мастермайнд: Клиентский сервис</h3>
+                <p class="text-red-400 text-xs font-bold uppercase mb-2">Проблема:</p>
+                <p class="text-slate-400 text-sm mb-4">Выгорание саппорта. Операторы не могут быть тактичными из-за стресса. Сухая теория не работает.</p>
+                <div class="mb-6 bg-white/5 p-4 rounded-xl">
+                    <h4 class="text-[10px] font-bold uppercase text-slate-500 mb-2">Проектирование опыта:</h4>
+                    <div class="process-step">Внедрение "терапевтического" формата обмена опытом.</div>
+                    <div class="process-step">Нейро-вброс: объяснение процессов мозга в стрессе.</div>
+                    <div class="process-step">Техники взаимоподдержки и фасилитированная сессия.</div>
+                </div>
+                <a href="https://docs.google.com/document/d/1xljBFGqGGvW4cmuSYhEHZ9_hxHqskjG0nI_hBhdAX2M/edit?tab=t.0" target="_blank" class="external-link">Сценарий сессии (135 мин) ↗</a>
+            </section>
 
+            <!-- ЛОНГРИД -->
+            <section class="glass-card p-8 rounded-[2.5rem] flex flex-col border-2 border-indigo-500/20">
+                <a href="img/longread.jpg" target="_blank" class="img-link"><img src="img/longread.jpg" alt="Longread"></a>
+                <h3 class="text-2xl font-bold mb-4">Лонгрид: Конфликтология</h3>
+                <p class="text-indigo-400 text-xs font-bold uppercase mb-2">Методология:</p>
+                <p class="text-slate-400 text-sm mb-6">Сплав сторителлинга и нейробиологии. Обучение через кейсы ("История Леры") и блоки активного вспоминания.</p>
+                <div class="mt-auto space-y-3">
+                    <a href="https://docs.google.com/spreadsheets/d/12a937XR9mVONu0euUSZID8OiBdU7JmQCp0YhdrtmzPI/edit?gid=0#gid=0" target="_blank" class="external-link block">Темплан проекта ↗</a>
+                    <a href="https://leravalera93186.github.io/conflictology-project/" target="_blank" class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-500 transition text-center block text-sm">Открыть лонгрид</a>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <footer class="py-20 text-center opacity-40 text-xs tracking-[0.5em] uppercase">
-        Valeria Ivantsova | LX Architect 2026
+    <footer class="py-20 text-center">
+        <div class="flex justify-center gap-8 text-indigo-400 text-sm mb-4">
+            <a href="mailto:halera111@gmail.com">halera111@gmail.com</a>
+            <a href="https://t.me/ivalera_93">@ivalera_93</a>
+        </div>
+        <p class="opacity-30 text-[10px] uppercase tracking-widest">Valeria Ivantsova | Portfolio 2026</p>
     </footer>
 
 </body>
